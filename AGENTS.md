@@ -86,6 +86,7 @@ Stack: React 19 + TanStack Start/Router (rutas por archivo) + Vite 8 + Tailwind 
    - Soporte de estilos completos en `src/styles.css` para `.modal-panel`, `.info-card`, `.checklist`, `.quote`, `.book-page`, `.book-cover`, `.route-map`, etc.
    - Créditos académicos en `Welcome.tsx` para UFPS, Comercio Internacional y autoras (Paula Andrea Acevedo Carrillo y Alba Paola Alvarez Barranco).
    - Migración de clave de persistencia a `corona-falabella-stations-v2`.
+5. Soporte para despliegue en Render sin reposo: script `start` en `package.json`, endpoint liviano `/health` y auto-ping cada 10 min en `src/server.ts` (usando `RENDER_EXTERNAL_URL`), más workflow opcional `.github/workflows/keep-alive.yml`.
 
 ## Ideas pendientes (no pedidas aún)
 - Afinar el aspecto del mapa (más detalle de productos, iluminación) según feedback del usuario.

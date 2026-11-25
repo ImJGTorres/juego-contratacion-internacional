@@ -44,11 +44,37 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+let keepAliveStarted = false;
+
+// Evita que el plan gratuito de Render duerma el servicio tras 15 min de inactividad.
+// Render inyecta RENDER_EXTERNAL_URL automáticamente en tiempo de ejecución.
+function ensureKeepAlive() {
+  if (keepAliveStarted || typeof process === "undefined" || typeof setInterval !== "function") return;
+  const baseUrl = process.env?.["RENDER_EXTERNAL_URL"] || process.env?.["KEEP_ALIVE_URL"];
+  if (!baseUrl) return;
+  keepAliveStarted = true;
+  const target = `${baseUrl.replace(/\/+$/, "")}/health`;
+  const timer = setInterval(() => {
+    fetch(target).catch(() => {});
+  }, 10 * 60 * 1000);
+  if (typeof timer === "object" && "unref" in timer) timer.unref();
+}
+
+ensureKeepAlive();
+
 // Hosting compresses every response at the edge. Never compress a body (gzip, brotli,
 // CompressionStream) or set content-encoding here or in a server route: the body gets encoded
 // twice and renders garbled.
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    ensureKeepAlive();
+    const { pathname } = new URL(request.url);
+    if (pathname === "/health") {
+      return new Response("ok", {
+        status: 200,
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
+      });
+    }
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);

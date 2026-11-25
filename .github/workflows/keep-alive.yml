@@ -1,0 +1,15 @@
+name: Mantener Render despierto
+
+on:
+  schedule:
+    # Hace ping cada 10 minutos para evitar el reposo de 15 min del plan gratuito de Render
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    if: ${{ vars.RENDER_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health en Render
+        run: curl -fsS --max-time 60 "${{ vars.RENDER_URL }}/health"
