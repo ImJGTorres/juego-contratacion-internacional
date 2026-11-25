@@ -26,7 +26,7 @@ function Index() {
   const [stations, setStations] = useState<Station[]>(DEFAULT_STATIONS);
   useEffect(() => { setAvatar(loadAvatar()); setStations(loadStations()); }, []);
 
-  if (screen === "editor") return <AvatarEditor avatar={avatar} onChange={(a) => { setAvatar(a); saveAvatar(a); }} onEnter={() => setScreen("world")} />;
+  if (screen === "editor") return <AvatarEditor avatar={avatar} onChange={(a) => { setAvatar(a); saveAvatar(a); }} onEnter={() => setScreen("world")} onBack={() => setScreen("welcome")} />;
   if (screen === "world") return <World avatar={avatar} stations={stations} onExit={() => setScreen("editor")} />;
   return <Welcome onStart={() => setScreen("editor")} />;
 }

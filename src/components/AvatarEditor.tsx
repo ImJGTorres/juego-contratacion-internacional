@@ -25,15 +25,25 @@ function Colors({ label, value, options, onChange }: { label: string; value: str
   return (<div><p className="label-pixel">{label}</p><div className="flex flex-wrap gap-2">{options.map((o) => <button key={o} aria-label={o} onClick={() => onChange(o)} className={`swatch ${value === o ? "swatch-on" : ""}`} style={{ background: o }} />)}</div></div>);
 }
 
-export function AvatarEditor({ avatar, onChange, onEnter }: { avatar: Avatar; onChange: (a: Avatar) => void; onEnter: () => void }) {
+export function AvatarEditor({ avatar, onChange, onEnter, onBack }: { avatar: Avatar; onChange: (a: Avatar) => void; onEnter: () => void; onBack?: () => void }) {
   const set = <K extends keyof Avatar>(k: K, v: Avatar[K]) => onChange({ ...avatar, [k]: v });
   return (
-    <div className="scene flex min-h-screen items-center justify-center p-6">
+    <div className="scene flex min-h-screen flex-col items-center justify-center gap-6 p-6">
+      <div className="flex w-full max-w-5xl flex-col gap-3">
+        {onBack && (
+          <div>
+            <button className="btn-pixel btn-ghost" onClick={onBack}>← Volver al inicio</button>
+          </div>
+        )}
+        <h1 className="title-pixel text-center font-pixel text-4xl font-bold tracking-wide md:text-5xl">
+          ¡Prepárate para ir a Homecenter!
+        </h1>
+      </div>
       <div className="pixel-panel grid w-full max-w-5xl gap-8 bg-card p-8 text-card-foreground md:grid-cols-[auto_1fr]">
         <div className="flex flex-col items-center gap-6">
           <h2 className="font-pixel text-2xl text-primary">Tu personaje</h2>
           <Preview a={avatar} />
-          <button className="btn-pixel btn-lg" onClick={onEnter}>▶ Entrar al mundo</button>
+          <button className="btn-pixel btn-lg" onClick={onEnter}>▶ Entrar a Homecenter</button>
         </div>
         <div className="grid gap-5">
           <Opts label="Estilo de personaje" value={avatar.style} options={["humano", "elfo", "gato", "robot"]} onChange={(v) => set("style", v)} />
