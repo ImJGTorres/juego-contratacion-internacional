@@ -13,21 +13,18 @@ const Flag = ({ co }: { co?: boolean }) => (
 export function Welcome({ onStart }: { onStart: () => void }) {
   return (
     <div className="welcome flex min-h-screen flex-col bg-[#07152b] text-white">
-      <header className="flex items-center justify-between border-b border-white/10 px-6 py-6 md:px-[76px]">
-        <span className="font-display text-xl font-bold tracking-wide">CORONA <span className="text-cyan-300">×</span> FALABELLA</span>
+      <header className="flex items-center justify-end border-b border-white/10 px-6 py-6 md:px-[76px]">
         <div className="flex items-center gap-3 text-[10px] tracking-[.15em] text-white/60">
-          <span className="hidden sm:inline">UNA ALIANZA, UN MUNDO POR DESCUBRIR</span>
           <Flag co /><span>×</span><Flag />
           <span className="ml-4 grid h-5 w-5 place-items-center rounded-full border border-white/50 text-xs">?</span>
         </div>
       </header>
 
       <main className="relative flex flex-1 items-center overflow-hidden">
-        <img src="/store-welcome.png" alt="" className="absolute inset-0 h-full w-full object-cover object-right" />
+        <img src="/store-welcome.jpg" alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#07152b] via-[#07152b]/75 to-transparent" aria-hidden />
 
         <div className="relative z-10 px-6 py-16 md:px-[150px]">
-          <p className="mb-8 flex items-center gap-2 text-xs font-bold tracking-[.2em] text-cyan-300"><i className="h-2 w-2 rounded-full bg-cyan-300" />EXPLORA · DESCUBRE · CONSTRUYE</p>
           <h1 className="font-display text-6xl font-extrabold leading-[.95] md:text-[110px]">
             CORONA <span className="text-cyan-300">×</span><br />FALABELLA<span className="text-amber-400">.</span>
           </h1>
@@ -36,14 +33,7 @@ export function Welcome({ onStart }: { onStart: () => void }) {
           <button onClick={onStart} className="mt-10 inline-flex items-center gap-10 bg-blue-600 px-6 py-4 text-sm font-bold tracking-wide shadow-[5px_5px_0_0_rgba(0,0,0,.35)] transition hover:bg-blue-500">
             COMENZAR EL DESAFÍO <span className="text-xl">→</span>
           </button>
-          <p className="mt-8 flex gap-6 text-xs text-white/60"><span>◍ Colombia + Chile</span><span>▯ 5 historias por descubrir</span></p>
         </div>
-
-        <aside className="absolute bottom-10 right-10 z-10 hidden border-l-2 border-cyan-300 bg-[#07152b]/95 p-5 md:block">
-          <p className="text-[10px] tracking-[.15em] text-cyan-300">TU PRÓXIMA PARADA</p>
-          <p className="font-display mt-2 text-xl font-bold">Homecenter, Colombia</p>
-          <p className="mt-1 text-[11px] text-white/60">Una pequeña tienda. Una gran historia.</p>
-        </aside>
       </main>
 
       <footer className="flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-white/10 px-6 py-4 text-[10px] tracking-[.1em] text-white/60 md:px-[76px]">

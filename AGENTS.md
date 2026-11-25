@@ -87,6 +87,7 @@ Stack: React 19 + TanStack Start/Router (rutas por archivo) + Vite 8 + Tailwind 
    - Créditos académicos en `Welcome.tsx` para UFPS, Comercio Internacional y autoras (Paula Andrea Acevedo Carrillo y Alba Paola Alvarez Barranco).
    - Migración de clave de persistencia a `corona-falabella-stations-v2`.
 5. Soporte para despliegue en Render sin reposo: script `start` en `package.json`, endpoint liviano `/health` y auto-ping cada 10 min en `src/server.ts` (usando `RENDER_EXTERNAL_URL`), más workflow opcional `.github/workflows/keep-alive.yml`.
+6. Portada (`Welcome.tsx`): reemplazada imagen de fondo por `public/store-welcome.jpg` (foto fachada Homecenter Sodimac Corona) y limpieza de textos secundarios en header, hero y tarjeta lateral.
 
 ## Ideas pendientes (no pedidas aún)
 - Afinar el aspecto del mapa (más detalle de productos, iluminación) según feedback del usuario.
