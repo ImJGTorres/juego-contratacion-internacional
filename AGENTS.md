@@ -88,7 +88,7 @@ Stack: React 19 + TanStack Start/Router (rutas por archivo) + Vite 8 + Tailwind 
    - Migración de clave de persistencia a `corona-falabella-stations-v2`.
 5. Soporte para despliegue en Render sin reposo: script `start` en `package.json`, endpoint liviano `/health` y auto-ping cada 10 min en `src/server.ts` (usando `RENDER_EXTERNAL_URL`), más workflow opcional `.github/workflows/keep-alive.yml`.
 6. Portada (`Welcome.tsx`): reemplazada imagen de fondo por `public/store-welcome.jpg` (foto fachada Homecenter Sodimac Corona) y limpieza de textos secundarios en header, hero y tarjeta lateral.
-7. Portada centrada con degradado radial al centro, footer simplificado solo con los nombres de las autoras (ocultando enlace visible a `/admin`), y ajustes en `AvatarEditor.tsx` (título `¡Prepárate para ir a Homecenter!`, botón `← Volver al inicio` y botón `▶ Entrar a Homecenter`).
+7. Portada centrada con estética pixel/arcade (tipografía `Pixelify Sans`, título `CORONA × FALABELLA.` en una sola línea con sombra 3D y animación flotante, destellos `.stars`, caja pixel para la descripción, botón `▶ COMENZAR EL DESAFÍO` estilo juego con pulso y sombra 3D, footer solo con los nombres de las autoras ocultando enlace a `/admin`), y ajustes en `AvatarEditor.tsx` (título `¡Prepárate para ir a Homecenter!`, botón `← Volver al inicio` y botón `▶ Entrar a Homecenter`).
 
 ## Ideas pendientes (no pedidas aún)
 - Afinar el aspecto del mapa (más detalle de productos, iluminación) según feedback del usuario.
